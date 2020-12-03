@@ -114,23 +114,19 @@ void program92()
     {
         a[i][j] = count;
         if (i == up && j < n - right - 1)
-        {
             j++;
-        }
+
 
         else if (j == n - right - 1 && i < m - down - 1)
-        {
             i++;
-        }
+
 
         else if (i == m - down - 1 && j > left)
-        {
             j--;
-        }
+
         else
-        {
-            i--;
-        }
+           i--;
+
         if ((i == up + 1) && (j == left) && (left != n - right - 1))
         {
             up++;
