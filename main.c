@@ -8,8 +8,9 @@ void print_menu()
     printf("\nWhat do you want to watch?\n");
     printf("0. exit\n");
     printf("1. 9.1\n");
-    printf("2. 9.3\n");
-    printf("3. 9.4\n");
+    printf("2. 9.2\n");
+    printf("3. 9.3\n");
+    printf("4. 9.4\n");
 }
 
 void program91 ()
@@ -74,6 +75,82 @@ void program91 ()
 
 }
 
+void program92()
+{
+
+    int n, m;
+
+    int up = 0, down = 0, right = 0, left = 0;
+
+    int j = 0,i = 0;
+
+    int count = 1;
+
+    int **a;
+
+    printf("Введите размерность матрицы m*n\n");
+    scanf("%d%d", &m, &n);
+
+    a = (int**) malloc(m*sizeof(int*));
+
+    for (i = 0; i < m; i++)
+      a[i] = (int*) malloc(n*sizeof(int));
+
+    printf ("\nПервый вариант:\n");
+
+    for (i=0; i < m; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            a[i][j] = abs(i-j) + 1;
+            printf("%3d", a[i][j]);
+        }
+
+        printf("\n");
+    }
+    i = j = 0;
+
+    while (count <= m * n)
+    {
+        a[i][j] = count;
+        if (i == up && j < n - right - 1)
+        {
+            j++;
+        }
+
+        else if (j == n - right - 1 && i < m - down - 1)
+        {
+            i++;
+        }
+
+        else if (i == m - down - 1 && j > left)
+        {
+            j--;
+        }
+        else
+        {
+            i--;
+        }
+        if ((i == up + 1) && (j == left) && (left != n - right - 1))
+        {
+            up++;
+            down++;
+            left++;
+            right++;
+        }
+        count++;
+    }
+
+    printf ("\nВторой вариант:\n");
+    for (i = 0; i < m; i++)
+    {
+
+        for (j = 0; j < n; j++)
+            printf("%3d", a[i][j]);
+        printf("\n");
+    }
+
+}
 void program93 ()
 
 {
@@ -227,10 +304,13 @@ int main()
             break;
 
         case 2:
+            program92();
+            break;
+        case 3:
             program93();
             break;
 
-        case 3:
+        case 4:
             program94();
             break;
 
